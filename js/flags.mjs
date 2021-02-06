@@ -258,11 +258,11 @@ export class Flags {
         let flagArray = Object.keys(flagToNameMap).map(
             (key) => new Flag(flagToNameMap[key], key)
         )
-        this.#shuffle(flagArray)
+        this._shuffle(flagArray)
         return flagArray.slice(0,50)
     }
 
-    #shuffle(array) {
+    _shuffle(array) {
         // Copy + paste from https://stackoverflow.com/questions/2450954
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));

@@ -9,19 +9,19 @@ export class Questions {
 
     generate(){
         let questions = this.flags.map(
-            (flag, index) => new Question(flag, this.#options(index))
+            (flag, index) => new Question(flag, this._options(index))
         )
-        this.#shuffle(questions)
+        this._shuffle(questions)
         return questions
     }
 
-    #options(correctAnswerIndex) {
+    _options(correctAnswerIndex) {
         let indices = []
         while (indices.length < OPTIONS_PER_QUESTION - 1) {
             let randomIndex = Math.floor(
                 Math.random() * Math.floor(this.flags.length)
             )
-            if (this.#valid_index(randomIndex, correctAnswerIndex, indices)) {
+            if (this._valid_index(randomIndex, correctAnswerIndex, indices)) {
                 indices.push(randomIndex)
             }
         }
@@ -29,13 +29,13 @@ export class Questions {
         return indices.map((index) => this.flags[index])
     }
 
-    #valid_index(candidate_index, correctAnswerIndex, indices) {
+    _valid_index(candidate_index, correctAnswerIndex, indices) {
         let isDuplicate = indices.includes(candidate_index)
         let isCorrectAnswerIndex = candidate_index == correctAnswerIndex
         return !(isDuplicate || isCorrectAnswerIndex)
     }
 
-    #shuffle(array) {
+    _shuffle(array) {
         // Copy + paste from https://stackoverflow.com/questions/2450954
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
