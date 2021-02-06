@@ -2,7 +2,7 @@
 //  - see an image of a flag
 //  - see multiple text names of locations
 //  - select the correct name from those options
-//  - repeat the above for all 252 flags supported via emojis
+//  - repeat the above for all N flags supported via emojis
 //  - see which flags I got correct/incorrect at the end  
 
 import { Flags } from './flags.mjs'
